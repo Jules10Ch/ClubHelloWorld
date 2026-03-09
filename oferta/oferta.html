@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Próximos hackathones, cursos y eventos tecnológicos del Club Hello World — FES Aragón, UNAM.">
+    <meta name="theme-color" content="#6225e6">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="stylesOferta.css">
+    <script src="oferta.js" defer></script>
     <title>Oferta — Hello World</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
 
 <header>
     <div class="content">
         <div class="menu container">
-            <a href="index.html" class="logo"><img src="img/favicon.png" alt="Logo">Hello <span>World</span></a>
+            <a href="../index.html" class="logo"><img src="../img/favicon.png" alt="Logo Club Hello World" width="28" height="28">Hello <span>World</span></a>
             <input type="checkbox" id="menu"/>
-            <label for="menu" class="hamburger">
+            <label for="menu" class="hamburger" aria-label="Abrir menú de navegación">
                 <svg viewBox="0 0 32 32">
                     <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
                     <path class="line" d="M7 16 27 16"></path>
                 </svg>
             </label>
-            <nav class="navbar">
+            <nav class="navbar" aria-label="Menú principal">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
                     <li><a href="oferta.html" style="color:#c084fc;">Oferta</a></li>
-                    <li><a href="ranking.html">Ranking</a></li>
-                    <li><a href="unete.html">Únete</a></li>
-                    <li><a href="nuestro_club.html">Nuestro Club</a></li>
+                    <li><a href="../ranking/ranking.html">Ranking</a></li>
+                    <li><a href="../unete/unete.html">Únete</a></li>
+                    <li><a href="../nuestro_club/nuestro_club.html">Nuestro Club</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,37 +46,30 @@
 
 <!-- SECCIÓN DE EVENTOS -->
 <main class="events-section">
-    <h2 class="events-title">Próximos Eventos</h2>
+    <h1 class="events-title">Próximos Eventos</h1>
 
     <!-- HACKATHONES -->
     <div class="carousel-block">
         <h3 class="events-subtitle">Hackathones</h3>
         <div class="carousel-wrapper">
-            <button class="carousel-btn prev" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
-            ">&#8592;</button>
+            <button class="carousel-btn prev">&#8592;</button>
 
             <div class="cards-grid">
-                <div class="card" style="--accent:#c8a96e"
-                     onclick="window.open('https://encuestas.deloittemx.com/Answer/AnswerPoll.aspx?token=brqYcbS7i3gqb7LKbA9pVT4ZxBeT', '_blank')">
+                <div class="card" style="--accent:#c8a96e" data-url="https://encuestas.deloittemx.com/Answer/AnswerPoll.aspx?token=brqYcbS7i3gqb7LKbA9pVT4ZxBeT">
                     <div class="card-tag">Hackathon</div>
                     <div class="card-title">Deloitte: Hack & Defend</div>
                     <div class="card-date">📅 12 Mar 2026 · CDMX</div>
                     <div class="card-desc">Deloitte te invita al Hackathon: Hack and Defend. Una oportunidad única para poner a prueba tus habilidades en hacking ético, análisis forense e inteligencia de amenazas, ¡acompañado de verdaderos ciberexpertos!</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#c86e9a"
-                     onclick="window.open('https://ejemplo.com/evento3', '_blank')">
+                <div class="card" style="--accent:#c86e9a" data-url="https://ejemplo.com/evento3">
                     <div class="card-tag">Hackathon</div>
                     <div class="card-title">HackHW: 24h Build</div>
                     <div class="card-date">📅 5 Abr 2026 · Campus Central</div>
                     <div class="card-desc">Construye un proyecto en 24 horas. Premios y menciones para los mejores equipos.</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#8bc86e"
-                     onclick="window.open('https://ejemplo.com/evento4', '_blank')">
+                <div class="card" style="--accent:#8bc86e" data-url="https://ejemplo.com/evento4">
                     <div class="card-tag">Hackathon</div>
                     <div class="card-title">Hello World Open Night</div>
                     <div class="card-date">📅 18 Abr 2026 · Sala de Cómputo</div>
@@ -82,11 +78,7 @@
                 </div>
             </div>
 
-            <button class="carousel-btn next" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
-            ">&#8594;</button>
+            <button class="carousel-btn next">&#8594;</button>
         </div>
     </div>
 
@@ -94,31 +86,24 @@
     <div class="carousel-block">
         <h3 class="events-subtitle">Cursos</h3>
         <div class="carousel-wrapper">
-            <button class="carousel-btn prev" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
-            ">&#8592;</button>
+            <button class="carousel-btn prev">&#8592;</button>
 
             <div class="cards-grid">
-                <div class="card" style="--accent:#6eb5c8"
-                     onclick="window.open('https://weblab.t.u-tokyo.ac.jp/en/lecture/gci/', '_blank')">
+                <div class="card" style="--accent:#6eb5c8" data-url="https://weblab.t.u-tokyo.ac.jp/en/lecture/gci/">
                     <div class="card-tag">Curso</div>
                     <div class="card-title">GCI World - Matsuo Iwasawa Lab UTokyo</div>
                     <div class="card-date">📅 Límite de Registro: 2 Abr 2026 · Online</div>
                     <div class="card-desc">El curso GCI Global, desarrollado por el Laboratorio Matsuo-Iwasawa de la Universidad de Tokio, ofrece formación integral en ciencia de datos, desde fundamentos de Python hasta su aplicación en entornos empresariales.</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#c8a96e"
-                     onclick="window.open('https://ejemplo.com/evento2', '_blank')">
+                <div class="card" style="--accent:#c8a96e" data-url="https://ejemplo.com/evento2">
                     <div class="card-tag">Curso</div>
                     <div class="card-title">Taller de Algoritmos Avanzados</div>
                     <div class="card-date">📅 22 Mar 2026 · Online</div>
                     <div class="card-desc">Sesión intensiva sobre grafos, DP y estructuras de datos para competencias de programación.</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#c86e9a"
-                     onclick="window.open('https://ejemplo.com/evento3', '_blank')">
+                <div class="card" style="--accent:#c86e9a" data-url="https://ejemplo.com/evento3">
                     <div class="card-tag">Curso</div>
                     <div class="card-title">HackHW: 24h Build</div>
                     <div class="card-date">📅 5 Abr 2026 · Campus Central</div>
@@ -127,11 +112,7 @@
                 </div>
             </div>
 
-            <button class="carousel-btn next" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
-            ">&#8594;</button>
+            <button class="carousel-btn next">&#8594;</button>
         </div>
     </div>
 
@@ -139,31 +120,24 @@
     <div class="carousel-block">
         <h3 class="events-subtitle">Eventos</h3>
         <div class="carousel-wrapper">
-            <button class="carousel-btn prev" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
-            ">&#8592;</button>
+            <button class="carousel-btn prev">&#8592;</button>
 
             <div class="cards-grid">
-                <div class="card" style="--accent:#c8a96e"
-                     onclick="window.open('https://becas.talent-land.mx/secihti?utm_source=talent-comms&utm_medium=email&utm_campaign=becas-innovacion-federal-1&utm_content=2d95748a-4a0f-4932-8d72-398a460bca00', '_blank')">
+                <div class="card" style="--accent:#c8a96e" data-url="https://becas.talent-land.mx/secihti?utm_source=talent-comms&utm_medium=email&utm_campaign=becas-innovacion-federal-1&utm_content=2d95748a-4a0f-4932-8d72-398a460bca00">
                     <div class="card-tag">Evento</div>
                     <div class="card-title">Beca Talent Land México 2026</div>
                     <div class="card-date">📅 Abril 2026 · Santa Fe, CDMX</div>
                     <div class="card-desc">Conferencias con ponentes nacionales e internacionales, espacios de networking, vinculación con empresas y ecosistemas de innovación en tecnología, ciencia e innovación.</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#6eb5c8"
-                     onclick="window.open('https://ejemplo.com/evento1', '_blank')">
+                <div class="card" style="--accent:#6eb5c8" data-url="https://ejemplo.com/evento1">
                     <div class="card-tag">Evento</div>
                     <div class="card-title">ICPC Regional 2026</div>
                     <div class="card-date">📅 15 Mar 2026 · CDMX, México</div>
                     <div class="card-desc">Clasificatorio regional para el ICPC World Finals. Equipos de 3 integrantes resuelven problemas de algoritmia bajo presión de tiempo.</div>
                     <div class="card-arrow">Abrir ↗️</div>
                 </div>
-                <div class="card" style="--accent:#8bc86e"
-                     onclick="window.open('https://ejemplo.com/evento4', '_blank')">
+                <div class="card" style="--accent:#8bc86e" data-url="https://ejemplo.com/evento4">
                     <div class="card-tag">Evento</div>
                     <div class="card-title">Hello World Open Night</div>
                     <div class="card-date">📅 18 Abr 2026 · Sala de Cómputo</div>
@@ -172,11 +146,7 @@
                 </div>
             </div>
 
-            <button class="carousel-btn next" onclick="
-                const grid = this.parentElement.querySelector('.cards-grid');
-                const card = grid.querySelector('.card');
-                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
-            ">&#8594;</button>
+            <button class="carousel-btn next">&#8594;</button>
         </div>
     </div>
 
@@ -189,59 +159,59 @@
             <span class="footer-tagline">Comunidad · Competencia · Crecimiento</span>
         </div>
         <div class="footer-logo">
-            <img src="img/logo.png" alt="Hello World Logo">
+            <img src="../img/logo.png" alt="Hello World Logo" width="70" height="70" loading="lazy">
         </div>
         <div class="footer-socials">
             <!-- Instagram -->
             <div class="social-button">
-                <a href="https://www.instagram.com" target="_blank">
-                    <button style="width:48px;height:48px;position:relative;background:transparent;cursor:pointer;border:none;">
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram del club">
+                    <div style="width:48px;height:48px;position:relative;display:inline-block;">
                         <div style="position:absolute;inset:0;background:#a855f7;border-radius:50%;"></div>
                         <div style="position:relative;z-index:10;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border:2px solid #a855f7;border-radius:50%;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 22 22" fill="white">
                                 <path d="M21.94 6.47C21.89 5.3 21.7 4.5 21.43 3.8C21.15 3.06 20.72 2.4 20.16 1.85C19.61 1.29 18.94 0.86 18.21 0.58C17.51 0.31 16.71 0.12 15.54 0.07C14.36 0.01 13.99 0 11 0C8.02 0 7.64 0.01 6.47 0.06C5.3 0.12 4.5 0.31 3.8 0.58C3.06 0.86 2.4 1.28 1.85 1.85C1.29 2.4 0.86 3.06 0.58 3.79C0.31 4.5 0.12 5.29 0.07 6.46C0.01 7.64 0 8.02 0 11C0 13.99 0.01 14.36 0.06 15.54C0.12 16.71 0.31 17.51 0.58 18.21C0.86 18.94 1.29 19.61 1.85 20.16C2.4 20.72 3.06 21.15 3.79 21.42C4.5 21.69 5.29 21.88 6.46 21.94C7.64 21.99 8.01 22 11 22C13.98 22 14.36 21.99 15.53 21.94C16.7 21.88 17.5 21.7 18.2 21.42C18.93 21.14 19.6 20.71 20.15 20.15C20.7 19.6 21.14 18.94 21.42 18.21C21.69 17.5 21.88 16.71 21.93 15.54C21.98 14.36 22 13.99 22 11C22 8.02 21.99 7.64 21.94 6.47ZM11 16.65C7.88 16.65 5.35 14.12 5.35 11C5.35 7.88 7.88 5.35 11 5.35C14.12 5.35 16.65 7.88 16.65 11C16.65 14.12 14.12 16.65 11 16.65ZM16.88 5.13C16.15 5.13 15.56 4.54 15.56 3.81C15.56 3.08 16.15 2.49 16.88 2.49C17.61 2.49 18.2 3.08 18.2 3.81C18.2 4.54 17.61 5.13 16.88 5.13ZM11 7.34C8.98 7.34 7.34 8.98 7.34 11C7.34 13.03 8.98 14.67 11 14.67C13.03 14.67 14.67 13.03 14.67 11C14.67 8.98 13.03 7.34 11 7.34Z"/>
                             </svg>
                         </div>
-                    </button>
+                    </div>
                 </a>
             </div>
             <!-- GitHub -->
             <div class="social-button">
-                <a href="https://www.github.com" target="_blank">
-                    <button style="width:48px;height:48px;position:relative;background:transparent;cursor:pointer;border:none;">
+                <a href="https://www.github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub del club">
+                    <div style="width:48px;height:48px;position:relative;display:inline-block;">
                         <div style="position:absolute;inset:0;background:#000;border-radius:50%;"></div>
                         <div style="position:relative;z-index:10;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border:2px solid #000;border-radius:50%;">
                             <svg height="22" width="22" viewBox="0 0 24 24" fill="white">
                                 <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.17 6.839 9.481.5.092.683-.217.683-.481 0-.237-.009-.866-.013-1.699-2.782.603-3.37-1.338-3.37-1.338-.454-1.15-1.11-1.458-1.11-1.458-.906-.619.069-.606.069-.606 1.002.071 1.527 1.03 1.527 1.03.89 1.529 2.34 1.087 2.911.831.091-.645.348-1.087.634-1.338-2.22-.252-4.555-1.11-4.555-4.94 0-1.09.39-1.986 1.028-2.682-.103-.252-.446-1.268.098-2.642 0 0 .837-.268 2.75 1.024a9.563 9.563 0 012.496-.335 9.58 9.58 0 012.496.335c1.913-1.292 2.75-1.024 2.75-1.024.544 1.374.202 2.39.1 2.642.64.696 1.027 1.592 1.027 2.682 0 3.839-2.338 4.685-4.567 4.933.358.309.678.916.678 1.847 0 1.334-.012 2.412-.012 2.74 0 .267.18.577.688.481A12.01 12.01 0 0022 12c0-5.523-4.477-10-10-10z"/>
                             </svg>
                         </div>
-                    </button>
+                    </div>
                 </a>
             </div>
             <!-- LinkedIn -->
             <div class="social-button">
-                <a href="https://www.linkedin.com" target="_blank">
-                    <button style="width:48px;height:48px;position:relative;background:transparent;cursor:pointer;border:none;">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn del club">
+                    <div style="width:48px;height:48px;position:relative;display:inline-block;">
                         <div style="position:absolute;inset:0;background:#3b82f6;border-radius:50%;"></div>
                         <div style="position:relative;z-index:10;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border:2px solid #3b82f6;border-radius:50%;">
                             <svg height="22" width="22" viewBox="0 0 24 24" fill="white">
                                 <path d="M20,2H4C2.9,2,2,2.9,2,4v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2zM8.5,19H6V10h2.5V19zM7.3,9h-0.1C6.4,9,6,8.6,6,8.1V7.9c0-0.5,0.4-0.9,0.9-0.9h0.1C7.6,7,8,7.4,8,7.9v0.1C8,8.6,7.6,9,7.3,9zM19,19h-2.5v-4.9c0-1.2-0.4-2-1.4-2c-0.8,0-1.3,0.6-1.5,1.2h-0.1V19H10V10h2.3v1.3h0C12.7,10.7,14,9.9,15.5,9.9c2.1,0,3.5,1.4,3.5,3.8V19z"/>
                             </svg>
                         </div>
-                    </button>
+                    </div>
                 </a>
             </div>
             <!-- Email -->
             <div class="social-button">
-                <a href="https://gmail.com" target="_blank">
-                    <button style="width:48px;height:48px;position:relative;background:transparent;cursor:pointer;border:none;">
+                <a href="https://gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Correo del club">
+                    <div style="width:48px;height:48px;position:relative;display:inline-block;">
                         <div style="position:absolute;inset:0;background:#f87171;border-radius:50%;"></div>
                         <div style="position:relative;z-index:10;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border:2px solid #f87171;border-radius:50%;">
                             <svg height="26" width="26" viewBox="0 0 32 32" fill="white">
                                 <path d="M28 5H4c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h24c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2zm0 4.879L16 18 4 9.879V7l12 8 12-8v2.879zM4 23V11.885l11.446 7.63c.269.18.594.274.921.274s.652-.094.92-.274L28 11.885V23H4z"/>
                             </svg>
                         </div>
-                    </button>
+                    </div>
                 </a>
             </div>
         </div>

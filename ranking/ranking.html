@@ -3,134 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Club Hello World — Comunidad tecnológica de élite en la FES Aragón, UNAM. Hackathones, cursos y competencias de programación.">
+    <meta name="description" content="Ranking del Club Hello World — Clasificación de miembros por puntos acumulados en competencias y actividades.">
     <meta name="theme-color" content="#6225e6">
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
-    <script src="index.js" defer></script>
-    <title>Club Hello World</title>
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="ranking.js" defer></script>
+    <title>Ranking — Hello World</title>
+    <link rel="stylesheet" href="ranking.css">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap"
+          rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
 </head>
 <body>
+
 <header>
     <div class="content">
         <div class="menu container">
-            <a href="index.html" class="logo"><img src="img/favicon.png" alt="Logo Club Hello World" width="28" height="28">Hello <span>World</span></a>
+            <a href="../index.html" class="logo"><img src="../img/favicon.png" alt="Logo Club Hello World" width="28" height="28">Hello <span>World</span></a>
             <input type="checkbox" id="menu"/>
             <label for="menu" class="hamburger" aria-label="Abrir menú de navegación">
                 <svg viewBox="0 0 32 32">
-                    <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                    <path class="line line-top-bottom"
+                          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
                     <path class="line" d="M7 16 27 16"></path>
                 </svg>
             </label>
             <nav class="navbar" aria-label="Menú principal">
                 <ul>
-                    <li><a href="#" style="color:#c084fc;">Inicio</a></li>
-                    <li><a href="oferta/oferta.html">Oferta</a></li>
-                    <li><a href="ranking/ranking.html">Ranking</a></li>
-                    <li><a href="unete/unete.html">Únete</a></li>
-                    <li><a href="nuestro_club/nuestro_club.html">Nuestro Club</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../oferta/oferta.html">Oferta</a></li>
+                    <li><a href="ranking.html" style="color:#c084fc;">Ranking</a></li>
+                    <li><a href="../unete/unete.html">Únete</a></li>
+                    <li><a href="../nuestro_club/nuestro_club.html">Nuestro Club</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 </header>
 
-<main aria-label="Contenido principal">
-<h1 class="visually-hidden">Club Hello World — FES Aragón UNAM</h1>
-<section class="carousel" aria-label="Galería de imágenes del club">
+<main class="ranking-section">
+    <h1 class="ranking-title">Ranking del Club</h1>
+    <p class="ranking-subtitle">Puntuación acumulada por competencias y actividades</p>
 
-    <input type="radio" name="slider" id="slide1" checked>
-    <input type="radio" name="slider" id="slide2">
-    <input type="radio" name="slider" id="slide3">
+    <!-- PODIO TOP 3 -->
+    <div class="podium" id="podium"></div>
 
-    <div class="slides">
-        <div class="slide s1">
-            <a href="nuestro_club/nuestro_club.html">
-                <img src="img/logoclub2.jpeg" alt="Club Hello World" width="900" height="400" fetchpriority="high">
-            </a>
-        </div>
-        <div class="slide">
-            <a href="oferta/oferta.html">
-                <img src="img/hackathon.jpg" alt="Hackathon" width="900" height="400" loading="lazy">
-            </a>
-        </div>
-        <div class="slide">
-            <a href="https://www.google.com/maps/place/Facultad+de+Estudios+Superiores+Arag%C3%B3n+UNAM/@19.4747788,-99.0458134,17z" target="_blank" rel="noopener noreferrer">
-                <img src="img/fes2.jpeg" alt="FES Aragón UNAM" width="900" height="400" loading="lazy">
-            </a>
-        </div>
-    </div>
-
-    <div class="arrows">
-        <label for="slide3" class="prev" aria-label="Imagen anterior">&#10094;</label>
-        <label for="slide2" class="next" aria-label="Imagen siguiente">&#10095;</label>
-        <label for="slide1" class="prev" aria-label="Imagen anterior">&#10094;</label>
-        <label for="slide3" class="next" aria-label="Imagen siguiente">&#10095;</label>
-        <label for="slide2" class="prev" aria-label="Imagen anterior">&#10094;</label>
-        <label for="slide1" class="next" aria-label="Imagen siguiente">&#10095;</label>
-    </div>
-
-    <div class="navigation">
-        <label for="slide1" class="dot" aria-label="Ir a imagen 1"></label>
-        <label for="slide2" class="dot" aria-label="Ir a imagen 2"></label>
-        <label for="slide3" class="dot" aria-label="Ir a imagen 3"></label>
-    </div>
-
-</section>
-
-<!-- ── TERMINAL + STATS ─────────────────────────────────────── -->
-<section class="hw-showcase">
-    <div class="hw-showcase-inner">
-
-        <!-- Terminal animada -->
-        <div class="hw-terminal">
-            <div class="hw-terminal-bar">
-                <span class="hw-dot" style="background:#ff5f57;"></span>
-                <span class="hw-dot" style="background:#febc2e;"></span>
-                <span class="hw-dot" style="background:#28c840;"></span>
-                <span class="hw-terminal-title">hello_world_club — zsh</span>
-            </div>
-            <div class="hw-terminal-body">
-                <div id="hw-terminal-output"></div>
-                <span class="hw-cursor" id="hw-cursor">█</span>
-            </div>
-        </div>
-
-        <!-- Contadores animados -->
-        <div class="hw-stats-grid">
-            <div class="hw-stat-card">
-                <div class="hw-stat-value">
-                    <span class="hw-stat-num" data-target="40">0</span><span class="hw-stat-suffix">+</span>
-                </div>
-                <div class="hw-stat-label">Miembros</div>
-            </div>
-            <div class="hw-stat-card">
-                <div class="hw-stat-value">
-                    <span class="hw-stat-num" data-target="15">0</span>
-                </div>
-                <div class="hw-stat-label">Hackathones</div>
-            </div>
-            <div class="hw-stat-card">
-                <div class="hw-stat-value">
-                    <span class="hw-stat-num" data-target="6">0</span>
-                </div>
-                <div class="hw-stat-label">1er Lugares</div>
-            </div>
-            <div class="hw-stat-card">
-                <div class="hw-stat-value">
-                    <span class="hw-stat-num" data-target="3">0</span>
-                </div>
-                <div class="hw-stat-label">Cursos Activos</div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
+    <!-- TABLA 4+ -->
+    <div id="table-wrap"></div>
 </main>
 
 <footer class="site-footer">
@@ -140,7 +64,7 @@
             <span class="footer-tagline">Comunidad · Competencia · Crecimiento</span>
         </div>
         <div class="footer-logo">
-            <img src="img/logo.png" alt="Hello World Logo" width="70" height="70" loading="lazy">
+            <img src="../img/logo.png" alt="Hello World Logo" width="70" height="70" loading="lazy">
         </div>
         <div class="footer-socials">
             <!-- Instagram -->
