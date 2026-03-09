@@ -4,9 +4,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="formulario.css">
     <title>Únete — Hello World</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -18,7 +20,7 @@
 <header>
     <div class="content">
         <div class="menu container">
-            <a href="index.html" class="logo">Hello <span>World</span></a>
+            <a href="index.html" class="logo"><img src="img/favicon.png" alt="Logo">Hello <span>World</span></a>
             <input type="checkbox" id="menu"/>
             <label for="menu" class="hamburger">
                 <svg viewBox="0 0 32 32">
@@ -29,9 +31,8 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#">Competencias</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
-                    <li><a href="#">Ranking</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="unete.html" style="color:#c084fc;">Únete</a></li>
                     <li><a href="nuestro_club.html">Nuestro Club</a></li>
                 </ul>
@@ -41,7 +42,7 @@
 </header>
 
 <div class="form-wrapper">
-    <form class="modern-form" action="https://formspree.io/f/xzdjzgle" method="POST">
+    <form class="modern-form" action="https://formspree.io/f/xkoqogyo" method="POST">
         <h2>¡Únete al Club!</h2>
         <p>Completa tus datos para continuar con el registro.</p>
 
@@ -60,9 +61,11 @@
             <label for="message">¿Porque quieres unirte al club?</label>
         </div>
 
+        <div class="g-recaptcha" data-sitekey="6Lf4Q4QsAAAAAIpdg842RaE7m7HdiC7Y6fVwx3SK" style="margin-bottom: 20px;"></div>
+
         <div class="button-container">
-            <button type="submit" class="cta">
-                <span class="span">ENVIAR</span>
+            <button type="submit" class="cta" id="submit-btn">
+                <span class="span" id="btn-text">ENVIAR</span>
                 <span class="second">
                     <svg width="50px" height="20px" viewBox="0 0 66 43">
                         <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -80,6 +83,16 @@
                 </span>
             </button>
         </div>
+
+        <div id="form-feedback" style="
+            display: none;
+            margin-top: 1.2rem;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            text-align: center;
+        "></div>
     </form>
 </div>
 
@@ -88,6 +101,9 @@
         <div class="footer-brand">
             <div class="footer-name">Hello <span>World</span></div>
             <span class="footer-tagline">Comunidad · Competencia · Crecimiento</span>
+        </div>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Hello World Logo">
         </div>
         <div class="footer-socials">
             <!-- Instagram -->
@@ -143,28 +159,77 @@
                 </a>
             </div>
         </div>
-        <p class="footer-copy">© 2025 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
+        <p class="footer-copy">© 2026 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
     </div>
 </footer>
 
 <script>
-    const $form = document.querySelector(".modern-form")
-    $form.addEventListener("submit", handleSubmit)
-    async function handleSubmit(event) {
-        event.preventDefault()
-        const form = new FormData(this)
-        const response = await fetch(this.action, {
-            method: this.method,
-            body: form,
-            headers: {
-                "Accept": "application/json"
-            }
-        })
-        if (response.ok) {
-            this.reset()
-            alert("¡Gracias por aplicar al club! Nos pondremos en contacto contigo pronto!.")
-        }
+    const $form = document.querySelector(".modern-form");
+    const $btn = document.getElementById("submit-btn");
+    const $btnText = document.getElementById("btn-text");
+    const $feedback = document.getElementById("form-feedback");
+
+    function showFeedback(message, type) {
+        const styles = {
+            success: { bg: "#d1fae5", color: "#065f46", border: "1px solid #6ee7b7" },
+            error:   { bg: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5" },
+            loading: { bg: "#ede9fe", color: "#4c1d95", border: "1px solid #c4b5fd" },
+        };
+        const s = styles[type];
+        $feedback.style.display = "block";
+        $feedback.style.background = s.bg;
+        $feedback.style.color = s.color;
+        $feedback.style.border = s.border;
+        $feedback.textContent = message;
     }
+
+    $form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            showFeedback("⚠️ Por favor completa el reCAPTCHA antes de enviar.", "error");
+            return;
+        }
+
+        $btn.disabled = true;
+        $btnText.textContent = "ENVIANDO...";
+        showFeedback("⏳ Enviando tu solicitud...", "loading");
+
+        try {
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
+                method: this.method,
+                body: formData,
+                headers: { "Accept": "application/json" }
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                this.reset();
+                grecaptcha.reset();
+                showFeedback("✅ ¡Gracias por aplicar al club! Nos pondremos en contacto contigo pronto.", "success");
+                $btnText.textContent = "¡ENVIADO!";
+            } else {
+                let errorMsg = "Hubo un problema al enviar el formulario.";
+                if (data.errors && data.errors.length > 0) {
+                    errorMsg = data.errors.map(e => e.message || e.code).join(", ");
+                } else if (data.error) {
+                    errorMsg = data.error;
+                }
+                showFeedback("❌ Error: " + errorMsg + " Intenta de nuevo.", "error");
+                grecaptcha.reset();
+                $btn.disabled = false;
+                $btnText.textContent = "ENVIAR";
+            }
+        } catch (networkError) {
+            showFeedback("❌ Sin conexión a internet. Revisa tu red e intenta de nuevo.", "error");
+            grecaptcha.reset();
+            $btn.disabled = false;
+            $btnText.textContent = "ENVIAR";
+        }
+    });
 </script>
 </body>
 </html>

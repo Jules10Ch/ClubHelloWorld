@@ -4,6 +4,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="stylesOferta.css">
     <title>Oferta — Hello World</title>
@@ -19,7 +20,7 @@
 <header>
     <div class="content">
         <div class="menu container">
-            <a href="index.html" class="logo">Hello <span>World</span></a>
+            <a href="index.html" class="logo"><img src="img/favicon.png" alt="Logo">Hello <span>World</span></a>
             <input type="checkbox" id="menu"/>
             <label for="menu" class="hamburger">
                 <svg viewBox="0 0 32 32">
@@ -30,9 +31,8 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#">Competencias</a></li>
                     <li><a href="oferta.html" style="color:#c084fc;">Oferta</a></li>
-                    <li><a href="#">Ranking</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="unete.html">Únete</a></li>
                     <li><a href="nuestro_club.html">Nuestro Club</a></li>
                 </ul>
@@ -44,40 +44,142 @@
 <!-- SECCIÓN DE EVENTOS -->
 <main class="events-section">
     <h2 class="events-title">Próximos Eventos</h2>
-    <div class="cards-grid">
-        <div class="card" style="--accent:#c8a96e"
-             onclick="window.open('https://ejemplo.com/evento1', '_blank')">
-            <div class="card-tag">Competencia</div>
-            <div class="card-title">ICPC Regional 2026</div>
-            <div class="card-date">📅 15 Mar 2026 · CDMX, México</div>
-            <div class="card-desc">Clasificatorio regional para el ICPC World Finals. Equipos de 3 integrantes.</div>
-            <div class="card-arrow">Abrir ↗️</div>
-        </div>
-        <div class="card" style="--accent:#6eb5c8"
-             onclick="window.open('https://ejemplo.com/evento2', '_blank')">
-            <div class="card-tag">Workshop</div>
-            <div class="card-title">Taller de Algoritmos Avanzados</div>
-            <div class="card-date">📅 22 Mar 2026 · Online</div>
-            <div class="card-desc">Sesión intensiva sobre grafos, DP y estructuras de datos para competencias.</div>
-            <div class="card-arrow">Abrir ↗️</div>
-        </div>
-        <div class="card" style="--accent:#c86e9a"
-             onclick="window.open('https://ejemplo.com/evento3', '_blank')">
-            <div class="card-tag">Hackathon</div>
-            <div class="card-title">HackHW: 24h Build</div>
-            <div class="card-date">📅 5 Abr 2026 · Campus Central</div>
-            <div class="card-desc">Construye un proyecto en 24 horas. Premios y menciones para los mejores equipos.</div>
-            <div class="card-arrow">Abrir ↗️</div>
-        </div>
-        <div class="card" style="--accent:#8bc86e"
-             onclick="window.open('https://ejemplo.com/evento4', '_blank')">
-            <div class="card-tag">Meetup</div>
-            <div class="card-title">Hello World Open Night</div>
-            <div class="card-date">📅 18 Abr 2026 · Sala de Cómputo</div>
-            <div class="card-desc">Sesión abierta para nuevos miembros. Conoce al equipo y resuelve tu primer reto.</div>
-            <div class="card-arrow">Abrir ↗️</div>
+
+    <!-- HACKATHONES -->
+    <div class="carousel-block">
+        <h3 class="events-subtitle">Hackathones</h3>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
+            ">&#8592;</button>
+
+            <div class="cards-grid">
+                <div class="card" style="--accent:#c8a96e"
+                     onclick="window.open('https://encuestas.deloittemx.com/Answer/AnswerPoll.aspx?token=brqYcbS7i3gqb7LKbA9pVT4ZxBeT', '_blank')">
+                    <div class="card-tag">Hackathon</div>
+                    <div class="card-title">Deloitte: Hack & Defend</div>
+                    <div class="card-date">📅 12 Mar 2026 · CDMX</div>
+                    <div class="card-desc">Deloitte te invita al Hackathon: Hack and Defend. Una oportunidad única para poner a prueba tus habilidades en hacking ético, análisis forense e inteligencia de amenazas, ¡acompañado de verdaderos ciberexpertos!</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#c86e9a"
+                     onclick="window.open('https://ejemplo.com/evento3', '_blank')">
+                    <div class="card-tag">Hackathon</div>
+                    <div class="card-title">HackHW: 24h Build</div>
+                    <div class="card-date">📅 5 Abr 2026 · Campus Central</div>
+                    <div class="card-desc">Construye un proyecto en 24 horas. Premios y menciones para los mejores equipos.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#8bc86e"
+                     onclick="window.open('https://ejemplo.com/evento4', '_blank')">
+                    <div class="card-tag">Hackathon</div>
+                    <div class="card-title">Hello World Open Night</div>
+                    <div class="card-date">📅 18 Abr 2026 · Sala de Cómputo</div>
+                    <div class="card-desc">Sesión abierta para nuevos miembros. Conoce al equipo y resuelve tu primer reto de programación competitiva.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
+            ">&#8594;</button>
         </div>
     </div>
+
+    <!-- CURSOS -->
+    <div class="carousel-block">
+        <h3 class="events-subtitle">Cursos</h3>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
+            ">&#8592;</button>
+
+            <div class="cards-grid">
+                <div class="card" style="--accent:#6eb5c8"
+                     onclick="window.open('https://weblab.t.u-tokyo.ac.jp/en/lecture/gci/', '_blank')">
+                    <div class="card-tag">Curso</div>
+                    <div class="card-title">GCI World - Matsuo Iwasawa Lab UTokyo</div>
+                    <div class="card-date">📅 Límite de Registro: 2 Abr 2026 · Online</div>
+                    <div class="card-desc">El curso GCI Global, desarrollado por el Laboratorio Matsuo-Iwasawa de la Universidad de Tokio, ofrece formación integral en ciencia de datos, desde fundamentos de Python hasta su aplicación en entornos empresariales.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#c8a96e"
+                     onclick="window.open('https://ejemplo.com/evento2', '_blank')">
+                    <div class="card-tag">Curso</div>
+                    <div class="card-title">Taller de Algoritmos Avanzados</div>
+                    <div class="card-date">📅 22 Mar 2026 · Online</div>
+                    <div class="card-desc">Sesión intensiva sobre grafos, DP y estructuras de datos para competencias de programación.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#c86e9a"
+                     onclick="window.open('https://ejemplo.com/evento3', '_blank')">
+                    <div class="card-tag">Curso</div>
+                    <div class="card-title">HackHW: 24h Build</div>
+                    <div class="card-date">📅 5 Abr 2026 · Campus Central</div>
+                    <div class="card-desc">Construye un proyecto en 24 horas. Premios y menciones para los mejores equipos.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
+            ">&#8594;</button>
+        </div>
+    </div>
+
+    <!-- EVENTOS -->
+    <div class="carousel-block">
+        <h3 class="events-subtitle">Eventos</h3>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: -(card.offsetWidth + 28), behavior: 'smooth' });
+            ">&#8592;</button>
+
+            <div class="cards-grid">
+                <div class="card" style="--accent:#c8a96e"
+                     onclick="window.open('https://becas.talent-land.mx/secihti?utm_source=talent-comms&utm_medium=email&utm_campaign=becas-innovacion-federal-1&utm_content=2d95748a-4a0f-4932-8d72-398a460bca00', '_blank')">
+                    <div class="card-tag">Evento</div>
+                    <div class="card-title">Beca Talent Land México 2026</div>
+                    <div class="card-date">📅 Abril 2026 · Santa Fe, CDMX</div>
+                    <div class="card-desc">Conferencias con ponentes nacionales e internacionales, espacios de networking, vinculación con empresas y ecosistemas de innovación en tecnología, ciencia e innovación.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#6eb5c8"
+                     onclick="window.open('https://ejemplo.com/evento1', '_blank')">
+                    <div class="card-tag">Evento</div>
+                    <div class="card-title">ICPC Regional 2026</div>
+                    <div class="card-date">📅 15 Mar 2026 · CDMX, México</div>
+                    <div class="card-desc">Clasificatorio regional para el ICPC World Finals. Equipos de 3 integrantes resuelven problemas de algoritmia bajo presión de tiempo.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+                <div class="card" style="--accent:#8bc86e"
+                     onclick="window.open('https://ejemplo.com/evento4', '_blank')">
+                    <div class="card-tag">Evento</div>
+                    <div class="card-title">Hello World Open Night</div>
+                    <div class="card-date">📅 18 Abr 2026 · Sala de Cómputo</div>
+                    <div class="card-desc">Sesión abierta para nuevos miembros. Conoce al equipo y resuelve tu primer reto de programación competitiva.</div>
+                    <div class="card-arrow">Abrir ↗️</div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" onclick="
+                const grid = this.parentElement.querySelector('.cards-grid');
+                const card = grid.querySelector('.card');
+                grid.scrollBy({ left: card.offsetWidth + 28, behavior: 'smooth' });
+            ">&#8594;</button>
+        </div>
+    </div>
+
 </main>
 
 <footer class="site-footer">
@@ -85,6 +187,9 @@
         <div class="footer-brand">
             <div class="footer-name">Hello <span>World</span></div>
             <span class="footer-tagline">Comunidad · Competencia · Crecimiento</span>
+        </div>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Hello World Logo">
         </div>
         <div class="footer-socials">
             <!-- Instagram -->
@@ -140,7 +245,7 @@
                 </a>
             </div>
         </div>
-        <p class="footer-copy">© 2025 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
+        <p class="footer-copy">© 2026 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
     </div>
 </footer>
 

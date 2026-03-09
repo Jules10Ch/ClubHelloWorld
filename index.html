@@ -4,6 +4,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <title>Club Hello World</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +17,7 @@
 <header>
     <div class="content">
         <div class="menu container">
-            <a href="index.html" class="logo">Hello <span>World</span></a>
+            <a href="index.html" class="logo"><img src="img/favicon.png" alt="Logo">Hello <span>World</span></a>
             <input type="checkbox" id="menu"/>
             <label for="menu" class="hamburger">
                 <svg viewBox="0 0 32 32">
@@ -27,9 +28,8 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="#" style="color:#c084fc;">Inicio</a></li>
-                    <li><a href="#">Competencias</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
-                    <li><a href="#">Ranking</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="unete.html">Únete</a></li>
                     <li><a href="nuestro_club.html">Nuestro Club</a></li>
                 </ul>
@@ -38,12 +38,55 @@
     </div>
 </header>
 
+<section class="carousel">
+
+    <input type="radio" name="slider" id="slide1" checked>
+    <input type="radio" name="slider" id="slide2">
+    <input type="radio" name="slider" id="slide3">
+
+    <div class="slides">
+        <div class="slide s1">
+            <a href="nuestro_club.html">
+                <img src="img/logoclub2.jpeg" alt="Club Hello World">
+            </a>
+        </div>
+        <div class="slide">
+            <a href="oferta.html">
+                <img src="img/hackathon.jpg" alt="Hackathon">
+            </a>
+        </div>
+        <div class="slide">
+            <a href="https://www.google.com/maps/place/Facultad+de+Estudios+Superiores+Arag%C3%B3n+UNAM/@19.4747788,-99.0458134,17z" target="_blank">
+                <img src="img/fes2.jpeg" alt="FES Aragón UNAM">
+            </a>
+        </div>
+    </div>
+
+    <div class="arrows">
+        <label for="slide3" class="prev">&#10094;</label>
+        <label for="slide2" class="next">&#10095;</label>
+        <label for="slide1" class="prev">&#10094;</label>
+        <label for="slide3" class="next">&#10095;</label>
+        <label for="slide2" class="prev">&#10094;</label>
+        <label for="slide1" class="next">&#10095;</label>
+    </div>
+
+    <div class="navigation">
+        <label for="slide1" class="dot"></label>
+        <label for="slide2" class="dot"></label>
+        <label for="slide3" class="dot"></label>
+    </div>
+
+</section>
 
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
             <div class="footer-name">Hello <span>World</span></div>
             <span class="footer-tagline">Comunidad · Competencia · Crecimiento</span>
+        </div>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Hello World Logo">
         </div>
         <div class="footer-socials">
             <!-- Instagram -->
@@ -99,8 +142,70 @@
                 </a>
             </div>
         </div>
-        <p class="footer-copy">© 2025 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
+        <p class="footer-copy">© 2026 Hello World Club Universitario Multidisciplinario — Todos los derechos reservados</p>
     </div>
 </footer>
+<script>
+    const radios = document.querySelectorAll('input[name="slider"]');
+    const flechas = document.querySelectorAll('.arrows label');
+    const dots = document.querySelectorAll('.navigation .dot');
+    const slidesContainer = document.querySelector('.slides');
+
+    let currentSlide = 0;
+    let autoPlayInterval;
+    const totalSlides = radios.length;
+
+    function irASlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentSlide = index;
+        slidesContainer.style.transform = `translateX(-${index * 33.333}%)`;
+        radios[index].checked = true;
+    }
+
+    function siguienteSlide() { irASlide(currentSlide + 1); }
+    function anteriorSlide()  { irASlide(currentSlide - 1); }
+
+    function iniciarAutoplay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(siguienteSlide, 5000);
+    }
+
+    function detenerAutoplay() {
+        clearInterval(autoPlayInterval);
+        setTimeout(iniciarAutoplay, 10000);
+    }
+
+    flechas.forEach(flecha => {
+        flecha.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId    = this.getAttribute('for');
+            const targetIndex = parseInt(targetId.replace('slide', '')) - 1;
+            if (this.classList.contains('prev')) {
+                if (targetIndex === currentSlide - 1 ||
+                    (currentSlide === 0 && targetIndex === totalSlides - 1)) {
+                    irASlide(targetIndex);
+                }
+            } else {
+                if (targetIndex === currentSlide + 1 ||
+                    (currentSlide === totalSlides - 1 && targetIndex === 0)) {
+                    irASlide(targetIndex);
+                }
+            }
+            detenerAutoplay();
+        });
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function(e) {
+            e.preventDefault();
+            irASlide(index);
+            detenerAutoplay();
+        });
+    });
+
+    irASlide(0);
+    iniciarAutoplay();
+</script>
 </body>
 </html>

@@ -133,17 +133,13 @@
 }
 
 .directiva-avatar {
-    width: 56px;
-    height: 56px;
-    background-color: #6225e6;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
+    display: block;
     margin: 0 auto 12px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
+    border: 3px solid #6225e6;
 }
 
 .directiva-card h3 {
